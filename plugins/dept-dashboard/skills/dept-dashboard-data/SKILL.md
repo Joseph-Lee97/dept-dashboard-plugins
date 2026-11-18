@@ -14,9 +14,9 @@ description: DEPT 대시보드 집계 데이터(스트리밍·DSP, 광고 성과
 `get_dashboard_guide` 같은 dept-dashboard 도구가 이 채팅에 안 보이면 아직 로그인 전이다. 사용자에게 방법을 설명하지 말고 바로 로그인 창을 연다.
 
 - **Codex**
-  1. 터미널에서 `codex mcp list`로 서버 이름을 확인한다(이름이 다를 수 있으니 dept-dashboard 비슷한 이름을 쓴다).
-  2. `codex mcp login dept-dashboard` 실행 → 나온 로그인 주소를 사용자의 기본 외부 브라우저로 연다. 내장 브라우저·컴퓨터 사용·플러그인 화면 클릭은 쓰지 않는다.
-  3. 사용자가 대시보드 구글 로그인 → [허용]을 마칠 때까지 명령을 끄지 않고 기다린다.
+  1. 터미널에서 `codex mcp list`로 dept-dashboard(또는 비슷한 이름) 서버가 있는지 확인한다.
+  2. 없으면 `codex mcp add dept-dashboard --url https://dept-mcp.lazzy.chat/mcp`로 추가한다(이미 있으면 건너뛴다).
+  3. `codex mcp login dept-dashboard` 실행 → 나온 로그인 주소를 사용자의 기본 외부 브라우저로 연다. 내장 브라우저·컴퓨터 사용·플러그인 화면 클릭은 쓰지 않는다. 사용자가 대시보드 구글 로그인 → [허용]을 마칠 때까지 명령을 끄지 않고 기다린다.
   4. `codex mcp list`에서 로그인됨을 확인하고 "새 채팅을 열어야 도구가 붙어요"라고 알린다.
 - **Claude Code**: `/mcp` → dept-dashboard → 인증(구글 로그인 → [허용]).
 - 권한 때문에 브라우저를 못 열면 로그인 주소를 사용자에게 보여 주고 같은 컴퓨터의 브라우저에서 열어 달라고 한다.
