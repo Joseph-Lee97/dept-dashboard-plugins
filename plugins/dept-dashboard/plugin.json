@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "dept-dashboard",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "DEPT 대시보드 집계 데이터(스트리밍·광고 성과·SNS 등) 읽기 전용. 처음 쓸 때 대시보드 구글 로그인으로 연결.",
   "author": {
     "name": "DEPT"

@@ -3,17 +3,7 @@
   "mcpServers": {
     "dept-dashboard": {
       "type": "streamable-http",
-      "url": "https://dept-mcp.lazzy.chat/mcp",
-      "extensions": {
-        "com.openai": {
-          "auth": {
-            "type": "oauth",
-            "client": {
-              "mode": "dcr"
-            }
-          }
-        }
-      }
+      "url": "https://dept-mcp.lazzy.chat/mcp"
     }
   }
 }
