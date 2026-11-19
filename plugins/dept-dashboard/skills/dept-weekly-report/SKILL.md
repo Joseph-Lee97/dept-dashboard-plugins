@@ -5,6 +5,8 @@ description: DEPT 주간 성과 보고를 정해진 양식으로 만들 때 사�
 
 # DEPT 주간 성과 보고
 
+> **먼저 보고 일하기:** `data_catalog`가 있으면 먼저 불러(해당 recipe·데이터셋 cautions·도구 인자 확인) 쓸 데이터·도구와 이유를 한두 줄로 말한 뒤 조회한다. 숫자에는 `evidence`의 as_of·대시보드 링크를 각주로 붙인다. 자세한 규칙은 `dept-dashboard-data` 0·6절.
+
 ## 기간
 - 말이 없으면 최근 7일(끝 = 어제) vs 직전 7일. "지난주"는 지난주 월~일 vs 그 전 주(from·to로 준다).
 
