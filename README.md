@@ -34,6 +34,16 @@ codex plugin add dept-dashboard@dept
 codex plugin marketplace upgrade dept
 ```
 
+## 스킬(업무 흐름)
+
+- `dept-dashboard-data` — 질문별 도구·순서, 기간 기본값(최근 7일 vs 직전 7일), 숫자 읽는 법, 답 형식
+- `dept-weekly-report` — 주간 성과 보고(음원·곡·유튜브·SNS·광고) 정해진 양식
+- `dept-song-checkup` — 곡 하나 점검(플랫폼별 재생·스포티파이 공식 분석·유튜브·플레이리스트·광고·집행 제안)
+- `dept-ad-review` — 광고 효율 점검과 손볼 것 목록
+- `dept-sns-weekly` — SNS 계정 팔로워 증감·잘 된 게시물 주간 요약
+
+서버에 종합 분석 도구(`analyze_overview`·`analyze_song`·`analyze_ads`)가 있으면 스킬이 그것부터 쓰고, 없으면 개별 도구로 같은 결과를 만듭니다.
+
 ## 구조
 
 - `.claude-plugin/marketplace.json` — Claude Code 마켓플레이스
