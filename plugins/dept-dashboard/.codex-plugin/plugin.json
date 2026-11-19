@@ -1,6 +1,6 @@
 {
   "name": "dept-dashboard",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "DEPT 대시보드 집계 데이터(스트리밍·광고 성과·SNS 등) 읽기 전용. 처음 쓸 때 대시보드 구글 로그인으로 연결.",
   "author": {
     "name": "DEPT"
