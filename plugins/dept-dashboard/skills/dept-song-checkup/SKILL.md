@@ -12,6 +12,8 @@ description: DEPT 곡 하나를 점검할 때 사용. "○○ 요즘 어때?", "
 - 없으면 띄어쓰기·영문/한글을 바꿔 한 번 더 찾고, 그래도 없으면 비슷한 제목 후보를 보여 준다.
 
 ## 2. 데이터 모으기
+
+- 기간 비교는 `dept-dashboard-data` 3절을 따른다. 이전 기간이 발매 전이라 비교 기준이 없으면 `발매 전(비교 기준 없음)`으로 쓰고 증감률을 내지 않는다.
 **A. `analyze_song`이 있으면 한 번:** {query:"<제목>"} (기간 말이 있으면 compare·from·to). 쓰는 칸: `headlines`, `meta`, `dsp`, `spotify_for_artists`, `youtube`, `ads`, `ad_advice`, `cn_chart`, `candidates`.
 
 **B. 없으면:** (기간 기본 최근 7일 vs 직전 7일 — 이번·직전 두 번씩)

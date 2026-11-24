@@ -8,7 +8,7 @@ description: DEPT 구글·메타 광고 효율을 점검하고 손볼 것을 뽑
 > **먼저 보고 일하기:** `data_catalog`가 있으면 먼저 불러(해당 recipe·데이터셋 cautions·도구 인자 확인) 쓸 데이터·도구와 이유를 한두 줄로 말한 뒤 조회한다. 숫자에는 `evidence`의 as_of·대시보드 링크를 각주로 붙인다. 자세한 규칙은 `dept-dashboard-data` 0·6절.
 
 ## 기간
-- 말이 없으면 최근 7일(끝 = 광고 마지막 수집일) vs 직전 7일. 집행 제안은 최근 28일 기준(도구 고정).
+- 말이 없으면 최근 7일(끝 = 광고 마지막 수집일) vs 직전 7일. 집행 제안은 최근 28일 기준(도구 고정). 기간 비교는 `dept-dashboard-data` 3절을 따른다. 수집 범위가 서로 다르거나 불명확한 0원·CPV 변화는 이상 신호로 보지 않는다.
 
 ## 데이터 모으기
 **A. `analyze_ads`가 있으면 한 번:** {} 또는 {from, to, compare:"prev_period"}. 쓰는 칸: `headlines`, `to_fix`(손볼 것), `total`, `by_platform`, `campaigns`, `countries`, `funnel`, `creatives`, `advice`, `unlinked`.

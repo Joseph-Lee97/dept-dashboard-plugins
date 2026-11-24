@@ -37,6 +37,7 @@ codex plugin marketplace upgrade dept
 ## 스킬(업무 흐름)
 
 - `dept-dashboard-data` — 질문별 도구·순서, 기간 기본값(최근 7일 vs 직전 7일), 숫자 읽는 법, 답 형식
+- `dept-daily-briefing` — “오늘 특이 지표 있어?”에 확인할 것 최대 3개와 근거·다음 확인을 짧게 안내
 - `dept-weekly-report` — 주간 성과 보고(음원·곡·유튜브·SNS·광고) 정해진 양식
 - `dept-song-checkup` — 곡 하나 점검(플랫폼별 재생·스포티파이 공식 분석·유튜브·플레이리스트·광고·집행 제안)
 - `dept-ad-review` — 광고 효율 점검과 손볼 것 목록

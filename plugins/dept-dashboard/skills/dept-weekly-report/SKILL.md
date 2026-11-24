@@ -9,9 +9,10 @@ description: DEPT 주간 성과 보고를 정해진 양식으로 만들 때 사�
 
 ## 기간
 - 말이 없으면 최근 7일(끝 = 어제) vs 직전 7일. "지난주"는 지난주 월~일 vs 그 전 주(from·to로 준다).
+- 데이터 출처별로 `dept-dashboard-data` 3절의 비교 조건을 적용한다. 집계가 덜 된 항목은 동일 위치·길이로 다시 맞추거나 증감만 보류한다. 완전한 항목의 기간까지 함께 줄이지 말고, 조정된 기간과 출처는 따로 표시한다. 비교 불가 증감은 결론·곡 순위·광고 이상 후보에 사용하지 않는다.
 
 ## 데이터 모으기
-**A. `analyze_overview`가 있으면(안내 `get_dashboard_guide`의 tools에 있음) 그것 한 번이면 된다.**
+**A. `analyze_overview`가 있으면(안내 `get_dashboard_guide`의 tools에 있음) 그것부터 한 번 조회한다. 집계 기간이 어긋난 지표만 필요한 경우 추가 조회한다.**
 - 기본 기간: 인자 없이. 지난주처럼 날짜를 정하면 `{from, to, compare:"prev_period"}`.
 - 쓰는 칸: `headlines`(결론), `dsp_platforms`, `songs.rising/falling/spikes`, `youtube`, `sns.accounts/drops`, `sns_posts`, `ads.total/by_platform/anomalies`, `freshness`.
 
@@ -19,7 +20,7 @@ description: DEPT 주간 성과 보고를 정해진 양식으로 만들 때 사�
 1. 음원: `get_streaming_trend` {scope:"song", platform:"melon", metric:"streams", from, to, granularity:"total"} — 멜론·`genie`(metric plays)·`spotify`(metric plays)도 같은 식으로 플랫폼마다. 행의 `increase` 합 = 그 플랫폼 기간 재생 증가. 오른/내린 곡은 곡별 `increase`를 이번 vs 직전으로 비교.
 2. 스포티파이 공식: `get_track_daily` {source:"spotify", from, to, granularity:"week"} — 곡별 streams·saves·playlist_adds 상위 5.
 3. 유튜브: `get_track_daily` {source:"youtube", from, to, granularity:"week"} — views·subs_gained 합, 상위 영상 3.
-4. SNS: `get_sns_metrics` {from: 직전 시작, to, granularity:"week"} — 계정별 value_last 차이. 게시물: `get_sns_post_performance` {days:7, sort:"views", limit:5}.
+4. SNS: `get_sns_metrics` {from: 직전 시작, to, granularity:"week"} — 계정별 value_last 차이. 게시물: `dept-sns-weekly`의 기간 검증·집계 규칙을 따른다. 상위 게시물 예시와 전체 게시물 건수는 분리한다.
 5. 광고: `get_ad_performance` {group_by:"platform", from, to} 이번·직전, 상위 캠페인은 {group_by:"campaign"}.
 6. 알림: `get_alerts` {} — 켜진 알림이 있으면 짚을 점에.
 
@@ -27,7 +28,7 @@ description: DEPT 주간 성과 보고를 정해진 양식으로 만들 때 사�
 ```
 [DEPT 주간 성과] M/D(요일)~M/D(요일) · 직전 주 대비
 
-한 줄 결론: <가장 큰 변화 하나 + 숫자>
+한 줄 결론: <검증된 변화 하나 + 숫자 / 비교 가능한 자료가 없으면 집계 상태 한 줄>
 
 1. 음원 스트리밍
 | 플랫폼 | 이번 주 | 직전 주 | 증감 |
@@ -43,7 +44,8 @@ description: DEPT 주간 성과 보고를 정해진 양식으로 만들 때 사�
 
 4. SNS
 | 계정 | 팔로워 | 이번 주 증감 | 직전 주 증감 |  (주요 계정만, 줄어든 곳 표시)
-게시물 N개(직전 N개) · 조회 1위: 플랫폼 "제목" N회
+전체 게시물 수: N개(직전 N개, 두 기간의 전체 건수 확인 시만)
+게시물 하이라이트: 플랫폼 "제목" D+1 조회 N회(동일 D+시점의 확인된 후보 중; 누적값이면 누적이라고 표시)
 
 5. 광고(구글·메타)
 | 구분 | 광고비 | 조회 | CPV | CTR | (전체·구글·메타, 직전 대비 %)
@@ -59,4 +61,4 @@ description: DEPT 주간 성과 보고를 정해진 양식으로 만들 때 사�
 - 정산 금액·매출은 넣지 않는다(이 연결로 안 나옴). 광고비는 집행 실적(KRW)만.
 - 표의 숫자는 도구 결과 그대로, 천 단위 쉼표. 없는 칸은 "값 없음".
 - 유튜브 조회수를 음원 재생에 더하지 않는다. kind가 다른 플랫폼끼리 합치지 않는다.
-- 데이터가 늦은 출처는 "M/D까지 기준"을 붙인다.
+- 데이터가 늦은 출처는 "M/D까지 기준"을 붙인다. 비교를 위해 기간을 줄였으면 실제 두 구간을 표시하고, 맞출 수 없으면 `집계 중` 또는 `비교 불가`로 적는다.
